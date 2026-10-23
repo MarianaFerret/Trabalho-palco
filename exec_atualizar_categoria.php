@@ -1,13 +1,16 @@
 <?php
 require_once('conectar.php');
 //pegar os dados que veio do formulário no vetor $_POST
-$cod = $_POST['cod'];
-$frase = $_POST['frase'];
-$autor = $_POST['autor'];
+$id_categ = $_POST['id_categ'];
+$nome_show = $_POST['nome_show'];
 //montar o sql que irá atualizar o registro 
-$sql="update cadastro set frase='$frase', autor='$autor' where codigo=$cod";
-mysqli_query($conexao,$sql) or die(mysqli_connect_error());
-//voltar para form_atualizar.php e passar parâmetro com a mensagem de: Cadastro atualizado com sucesso
+$sql="update categorias set nome_show='$nome_show' where id_categ=$id_categ";
+
+if (mysqli_query($conn, $sql)) {
+    header("Location: painelRestrito.php");
+    exit;
+}
+
 $msg=urlencode('Registro atualizado com sucesso ! ! ! ');
 header ("location: ../php/form_atualizar.php?retorno=$msg");
 ?>

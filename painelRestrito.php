@@ -16,7 +16,7 @@ require_once './verifica_sessao.php';
                         <a href="./painelPrincipal.php" class="text-sm font-semibold hover:text-amber-400 transition">painel principal</a>
                         <a href="./form_cadastrar_show.php" class="text-sm font-semibold hover:text-amber-400 transition">Criar show</a>
                         <a href="./formCadastrarCategoria.php" class="text-sm font-semibold hover:text-amber-400 transition">Cadastrar categoria</a>
-                        <a href="./painelPrincipal" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-4 py-2 rounded-lg transition">Logout</a>
+                        <a href="./logout.php" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-4 py-2 rounded-lg transition">Logout</a>
                     </div>
                 </div>
             </nav>

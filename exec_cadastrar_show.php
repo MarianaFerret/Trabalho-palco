@@ -1,7 +1,7 @@
 <?php
 require_once('./conectar.php');
 //pegamos os dados que vieram do formulario no vetor $_POST 
-$categ_id = (INT)$_POST['categ_id'];
+$categ_id = $_POST['categ_id'];
 $titulo = $_POST['titulo'];
 $descricao = $_POST['descricao'];
 $data_show = $_POST['data_show'];
@@ -16,7 +16,11 @@ $img = $_POST['img'];
 $sql= "insert into shows (categ_id, titulo, descricao, data_show, locals, preco, capacidade, ing_disponiveis, imagem) values 
 ('$categ_id','$titulo', '$descricao', '$data_show', '$locals', '$preco', '$capacidade', '$ing_disponiveis', '$img ')";
 //executar/gravar os dados na tabela
-mysqli_query($conn,$sql) or die(mysqli_connect_error());
+
+if (mysqli_query($conn, $sql)) {
+    header("Location: painelRestrito.php");
+    exit;
+}
 
 $msg= urlencode('Sucesso!');
 header("location: ../php/form_cadastrar.php?retorno=$msg");

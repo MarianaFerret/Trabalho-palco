@@ -11,7 +11,11 @@ $senha = $_POST['senha'];
 $sql= "insert into usuarios (nome_usuario, email_usuario, senha) values 
 ('$nome', '$email', '$senha')";
 //executar/gravar os dados na tabela
-mysqli_query($conn,$sql) or die(mysqli_connect_error());
+
+if (mysqli_query($conn, $sql)) {
+    header("Location: login.php");
+    exit;
+}
 
 
 //faz o upLoad da foto

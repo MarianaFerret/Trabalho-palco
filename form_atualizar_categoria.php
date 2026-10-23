@@ -1,46 +1,57 @@
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title></title>
+  <meta charset="UTF-8">
+  <title>Atualizar categorias</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-<h1> Atualizar Registros</h1> 
-<?php
-require_once('./conectar.php');
-$sql="select * from shows";
-$res=mysqli_query($conexao,$sql) or die(mysqli_connect_error());
-$num=mysqli_num_rows($res);
 
-while ($linha = mysqli_fetch_row($res))
-{
-$cod=$linha[0];
-echo "titulo: ".$linha[1]. ' - ';
-echo "descricao: ".$linha[2]. ' - ';
-echo "<a href='form_atualizar.php?cod=$cod&&frase=$linha[1]&&autor=$linha[2]'> [ Atualizar ] </a> ";
-echo "<br />";
-}
-?>
-<br /> <br /> <br /> <br /><br />   
-<h1> Altere os dados e clique Atualizar </h1>  
-<form name="dados" action="../php/exec_atualizar.php" method="POST">
-  <input type="hidden" name="cod" value="<?php if (isset ($_GET['cod'])) echo $_GET['cod'] ?>" />          
-<pre> Frase:  <input type="text" name="frase" size="150" value="<?php if (isset ($_GET['frase'])) echo $_GET['frase'] ?>" /> 
-<br />  
-Autor(a):<input type="text" name="autor" size="150" value="<?php if (isset ($_GET['autor'])) echo $_GET['autor'] ?>" /> </pre>
-<br />             
-  <input type="submit" name="sub" value="Atualizar"> 
-</form>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
 
-<?php
-if (isset ($_GET['retorno']))
-{
- $msg = $_GET['retorno'];
- echo "<br />";
- echo "<font face='Arial' size='3' color='#F00'>";
- echo $msg;
- $msg="";
- echo "</font>";
-}
-?>
+  <header class="relative bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mb-4">Formulário para Atualizar
+        categorias</h1>
+    </div>
+  </header>
+<br />
+  <form name="dados" action="exec_atualizar_categoria.php" method="POST" enctype="multipart/form-data">
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> id_categ: </prep> <br />
+    <?php
+    require_once('./conectar.php');
+    $sql = "SELECT*FROM categorias";
+    $res = mysqli_query($conn, $sql) or die(mysqli_connect_error());
+    $num = mysqli_num_rows($res);
+    while ($linha = mysqli_fetch_assoc($res)) {
+      ?> <input type='radio' name='id_categ' value=" <?php echo (INT) $linha['id_categ'] ?> "><?php echo $linha['nome_show'];
+    }
+    ?>
+    <br />
+    <br />
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Categoria: </prep> <input
+      class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
+      type="text" name="nome_show" size="100" /> <br /> <br />
+      <input
+      class="inline-block bg-amber-500 hover:bg-white text-slate-950 font-bold px-8 py-3 rounded-full shadow-lg transition"
+      type="submit" name="btn" value="Atualizar" />
+  </form>
+
+  <br />
+
+  <footer class="bg-black border-t border-slate-800 text-center py-15 text-slate-500 text-sm">
+    <p>&copy; Feito por Mariana Ferret Copello- 3i</p>
+  </footer>
+
+    <?php
+    if (isset($_GET['retorno'])) {
+      $msg = $_GET['retorno'];
+      echo "<br />";
+      echo "<font face='Arial' size='3' color='#F00'>";
+      echo $msg;
+      $msg = "";
+      echo "</font>";
+    }
+    ?>
 </body>
+
 </html>

@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Cadastrar Show</title>
@@ -6,47 +7,62 @@
 </head>
 
 <body class="bg-slate-950 text-slate-100 font-sans antialiased">
-  <h1 class="text-3xl font-black text-center text-amber-400 mb-12 uppercase"> Formulário para Cadastrar shows</h1>
+
+  <header class="relative bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 py-24 text-center px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight text-white mb-4">Formulário para Cadastrar
+        shows</h1>
+    </div>
+  </header>
+
+  <br />
+
   <form name="dados" action="exec_cadastrar_show.php" method="POST" enctype="multipart/form-data">
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> categ_id: </prep> <br />
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Categotia: </prep> <br />
     <?php
     require_once('./conectar.php');
     $sql = "SELECT*FROM categorias";
     $res = mysqli_query($conn, $sql) or die(mysqli_connect_error());
     $num = mysqli_num_rows($res);
     while ($linha = mysqli_fetch_assoc($res)) {
-      ?> <input type='radio' name='categ_id' value=" <?php echo (INT)$linha['id_categ'] ?> "><?php echo $linha['nome_show'];
+      ?> <input type='radio' name='categ_id' value=" <?php echo (INT) $linha['id_categ'] ?> "><?php echo $linha['nome_show'];
     }
     ?>
     <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> titulo: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Titulo: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="text" name="titulo" size="100" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> descricao: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Descricao: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="text" name="descricao" size="96" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> data_show: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Data do show: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="datetime-local" name="data_show" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> locals: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Local: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="text" name="locals" size="99" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> preco: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Preço: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="number" name="preco" step="any" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> capacidade: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Capacidade: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="number" name="capacidade" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> ing_disponiveis: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Ingressos disponiveis: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="number" name="ing_disponiveis" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> img: </prep> <input
+    <prep class="text-2xl font-bold text-amber-400 mb-2"> Imagem: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
       type="text" name="img" size='100' /> <br> <br> <br />
     <input
       class="inline-block bg-amber-500 hover:bg-white text-slate-950 font-bold px-8 py-3 rounded-full shadow-lg transition"
       type="submit" name="btn" value="Cadastrar" />
   </form>
+
+  <br />
+
+  <footer class="bg-black border-t border-slate-800 text-center py-6 text-slate-500 text-sm">
+    <p>&copy; Feito por Mariana Ferret Copello- 3i</p>
+  </footer>
 
   <?php
   if (isset($_GET['retorno'])) {
@@ -56,7 +72,6 @@
     echo $msg;
     $msg = "";
     echo "</font>";
-    //echo '<script type="text/javascript"> alert("Frase Famosa cadastrada com Sucesso!!!"); </script>';
   }
   ?>
 </body>
