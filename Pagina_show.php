@@ -12,6 +12,8 @@
         $categoria = $linha2['nome_show'];
     }
 
+    $local='./fotos/';
+
     while ($linha1 = mysqli_fetch_assoc($res1)) {
       echo '<html>';
       echo '<head>';
@@ -40,7 +42,9 @@
       echo '<br />';
       echo '<prep class="text-2xl font-bold text-amber-400 mb-2"> Ingressos disponiveis: </prep> <prep class="text-2xl font-bold text-white-400 mb-2">'.$linha1['ing_disponiveis']. '</prep>';
       echo '<br />';
-
+      if ($linha1['imagem']) {
+    echo '<img src="' . $local . $linha1['imagem'] . '" class=" max-h-96 object-cover rounded-xl mb-6">';
+}
       echo '<br />';
       echo '<footer class="bg-black border-t border-slate-800 text-center py-6 text-slate-500 text-sm">';
       echo '<p>&copy; Feito por Mariana Ferret Copello- 3i</p>';

@@ -54,16 +54,21 @@
       type="text" name="locals" size="99" /> <br /> <br />
     <prep class="text-2xl font-bold text-amber-400 mb-2"> Preço: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
-      type="number" name="preco" step="any" /> <br /> <br />
+      type="number" name="preco" step="any" min="0" /> <br /> <br />
     <prep class="text-2xl font-bold text-amber-400 mb-2"> Capacidade: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
-      type="number" name="capacidade" /> <br /> <br />
+      type="number" name="capacidade" min="0" /> <br /> <br />
     <prep class="text-2xl font-bold text-amber-400 mb-2"> Ingressos disponiveis: </prep> <input
       class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
-      type="number" name="ing_disponiveis" /> <br /> <br />
-    <prep class="text-2xl font-bold text-amber-400 mb-2"> Imagem: </prep> <input
-      class="bg-slate-900 border border-slate-800 rounded-2xl p-1 shadow-xl hover:border-amber400/50 transition"
-      type="text" name="img" size='100' /> <br> <br> <br />
+      type="number" name="ing_disponiveis" min="0" /> <br /> <br />
+    <label for="imagem"
+    class="inline-block cursor-pointer bg-amber-500 hover:bg-white
+           text-slate-950 font-bold px-8 py-3 rounded-full transition">
+    Escolher imagem
+</label>
+
+<input type="file" name="imagem" id="imagem"
+       accept="image/*" class="hidden">
     <input
       class="inline-block bg-amber-500 hover:bg-white text-slate-950 font-bold px-8 py-3 rounded-full shadow-lg transition"
       type="submit" name="btn" value="Atualizar" />
