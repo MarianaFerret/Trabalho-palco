@@ -48,7 +48,7 @@ require_once './verifica_sessao.php';
                     </div>
 
                     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl hover:border-amber400/50 transition">
-                        <h3 class="text-2xl font-bold text-amber-400 mb-2">Lista de shows</h3>
+                        <h3 class="text-2xl font-bold text-amber-400 mb-2">Lista de vendas</h3>
                         <a href="./fazerArquivoPDF.php" class="inline-block bg-amber-500 hover:bg-white text-slate-950 font-bold px-8 py-3 rounded-full shadow-lg transition">Gerar Lista</a>
                     </div>
                 </div>
